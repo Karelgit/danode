@@ -26,13 +26,13 @@ router.post('/load', async function(ctx) {
     var
         postUrl = ctx.request.body.postUrl;
         postMd5 = ctx.request.body.postMd5;
-        var imgname = postMd5+'.png';
+        var imgname = postMd5+'.jpeg';
 
     const instance = await phantom.create();
     const page = await instance.createPage();
     page.property('viewportSize',{ width: 1024, height : 800 });
     page.property('clipRect',{  top: 0, left: 0, width: 1024, height: 800 });
-    page.property('javascriptEnabled',false);
+    // page.property('javascriptEnabled',false);
     // page.setting('userAgent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36');
     page.setting('resourceTimeout',15000);
 
@@ -56,15 +56,14 @@ router.post('/load', async function(ctx) {
     })
     console.info("title: "+title)
 
-
     if(status ==='fail')  {
         ctx.response.append('title',encodeURIComponent(title));
         ctx.response.body = {"result":false,"msg":"下载失败"};
         ctx.response.status = 404;
     }else  {
-        await page.render(`static/${imgname}`);
+        const rederesult = await page.render(`static/${imgname}`,{format:'jpeg',quality:'100'});
         ctx.response.append('title',encodeURIComponent(title));
-        ctx.response.body = await fs.readFileSync(`static/${imgname}`);
+        ctx.response.body = fs.readFileSync(`static/${imgname}`);
     }
     await instance.exit();
 });
