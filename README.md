@@ -1,5 +1,4 @@
 #图片截图服务 by 海
-
 #访问方式
 
 request url = http://{domain}:3002/load
