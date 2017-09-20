@@ -3,14 +3,6 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="localRepository" value="$USER_HOME$/Repositories" />
-        <option name="userSettingsFile" value="$USER_HOME$/apache-maven-3.3.9/conf/settings.xml" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectResources">
     <resource url="http://mybatis.org/dtd/mybatis-3-config.dtd" location="$USER_HOME$/Downloads/mybatis-3-config.dtd" />
     <resource url="http://mybatis.org/dtd/mybatis-3-mapper.dtd" location="$USER_HOME$/Downloads/mybatis-3-mapper.dtd" />
